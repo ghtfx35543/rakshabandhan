@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raksha Bandhan Surprise for Trisha</title>
+<style>
+    body {
+        margin: 0;
+        background: radial-gradient(circle at center, #0a0f2c, #1b1f50);
+        overflow: hidden;
+        font-family: 'Dancing Script', cursive;
+        color: white;
+    }
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    #giftBox {
+        width: 200px;
+        cursor: pointer;
+        animation: bounce 1.5s infinite;
+    }
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-20px) scale(1.05); }
+    }
+    #letter {
+        display: none;
+        width: 300px;
+        background: #fff8dc;
+        color: #000;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px gold;
+        font-size: 18px;
+        line-height: 1.6;
+        max-height: 70vh;
+        overflow-y: auto;
+        white-space: pre-wrap;
+    }
+    .monkey {
+        display: none;
+        position: absolute;
+        top: -200px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px;
+    }
+    .fromMessage {
+        display: none;
+        font-size: 26px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: gold;
+    }
+</style>
+</head>
+<body>
+
+<div class="center">
+    <img id="giftBox" src="https://i.ibb.co/M7SYL5M/gift-box.png" alt="Gift Box">
+    <div id="letter"></div>
+    <img id="monkey" class="monkey" src="https://i.ibb.co/6snhgtT/monkey.png" alt="Monkey">
+    <div class="fromMessage">From your Brother, Naman 💙✨</div>
+</div>
+
+<script>
+    const giftBox = document.getElementById('giftBox');
+    const letter = document.getElementById('letter');
+    const monkey = document.getElementById('monkey');
+    const fromMessage = document.querySelector('.fromMessage');
+
+    const messageText = `**My Dearest Sister Trisha,** 
+
+Happy Rakshabandhan to my *sister from another mother*! 💖
+
+It’s still crazy to me that we’ve known each other for only two months, because honestly, it feels like a lifetime. In such a short time, you’ve become my safe space, my gossip partner, my cheerleader, my partner-in-crime, and my personal “therapist” when I overthink everything.
+
+We didn’t grow up together, we didn’t share the same childhood, but somehow the universe decided we needed each other now — and I’m so grateful it did. The way we clicked instantly, the way we understand each other’s unspoken words, and the way we can laugh at the most random things… it’s something rare.
+
+On Rakshabandhan, people celebrate the bond between a brother and sister, but I believe the heart chooses its own family — and you are my family. Even without tying a rakhi, I promise you my protection, loyalty, and unconditional support in every chapter of your life. I’ll be there to hype you up in your wins and hold you through your losses.
+
+Thank you for accepting me as I am, for listening when I rant, for making me laugh when I’m low, and for trusting me with your own stories. Our bond is proof that time doesn’t define relationships — connection does.
+
+So here’s to our inside jokes, our endless chats, our deep talks at random hours, and the unshakable bond we’ve built in just two months. I’m lucky to have you in my life, and I know this is just the start of a lifelong *siblinghood*.
+
+Love you loads, my sistern.
+Your partner in crime,
+Naman 💙✨`;
+
+    function typeWriter(text, i, callback) {
+        if (i < text.length) {
+            letter.innerHTML += text.charAt(i);
+            setTimeout(() => typeWriter(text, i + 1, callback), 50);
+        } else {
+            callback();
+        }
+    }
+
+    giftBox.addEventListener('click', () => {
+        giftBox.style.transition = 'transform 0.5s ease';
+        giftBox.style.transform = 'translateX(500px) rotate(720deg)';
+        setTimeout(() => {
+            monkey.style.display = 'block';
+            monkey.style.transition = 'top 1s ease';
+            monkey.style.top = '100px';
+            setTimeout(() => {
+                monkey.style.display = 'none';
+                letter.style.display = 'block';
+                letter.innerHTML = '';
+                typeWriter(messageText, 0, () => {
+                    setTimeout(() => {
+                        fromMessage.style.display = 'block';
+                    }, 1000);
+                });
+            }, 1500);
+        }, 500);
+    });
+</script>
+
+</body>
+</html>
